@@ -159,8 +159,9 @@ window.onload = () => {
     // perform auto paste functionality if desired
     if (ESCAPER.autoPaste.checked && navigator.clipboard
             && navigator.clipboard.readText) {
-        const text = navigator.clipboard.readText();
-        ESCAPER.input.value = text;
-        convert(text);
+        navigator.clipboard.readText().then(text => {
+            ESCAPER.input.value = text;
+            convert(text);    
+        });
     }
 };
